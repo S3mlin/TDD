@@ -98,6 +98,7 @@ class NewVisitorTest(LiveServerTestCase):
         page_text = self.browser.find_element(By.TAG_NAME, "body").text
         self.assertNotIn("Buy peacock feathers", page_text)
         self.assertIn("Buy milk", page_text)
+        
 
 class ItemModelTest(TestCase):
 
