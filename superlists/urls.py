@@ -13,9 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from lists import views
+from django.urls import path  
+from lists.views import home_page  
 
 urlpatterns = [
-    url(r'^$', views.home_page, name='home'),
+    path("", home_page, name="home"),  
 ]
