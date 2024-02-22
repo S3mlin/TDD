@@ -5,14 +5,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
 import time, unittest
-from django.test import TestCase, LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from lists.models import Item
 
 
 MAX_WAIT = 5
 
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):        
         options = Options()
@@ -65,8 +65,6 @@ class NewVisitorTest(LiveServerTestCase):
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
         self.assertTrue(any(row.text == "1: Buy peacock feathers" for row in rows))
-
-        self.fail('Finish the test!')
 
     
     def test_multiple_users_can_start_lists_at_different_urls(self):
