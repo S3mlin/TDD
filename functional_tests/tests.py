@@ -4,7 +4,7 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
-import time, unittest
+import time, unittest, os
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from lists.models import Item
 
@@ -19,6 +19,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
         options.binary_location = r"/usr/local/bin/firefox/firefox"
         service = Service(executable_path=r"/usr/local/bin/geckodriver")
         self.browser = webdriver.Firefox(options=options, service=service)
+        test_server = os.environ.get('TEST_SERVER')  
+        if test_server:
+            self.live_server_url = 'http://' + test_server
 
     def tearDown(self):
         self.browser.quit()
