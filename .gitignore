@@ -3,3 +3,4 @@ geckodriver.log
 test_venv
 __pycache__
 *.pyc
+/static
