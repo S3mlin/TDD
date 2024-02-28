@@ -38,3 +38,7 @@ class ListAndItemModelsTest(TestCase):
         with self.assertRaises(ValidationError):
             item.save()
             item.full_clean()
+
+    def test_get_absolute_url(self):
+        myList = List.objects.create()
+        self.assertEqual(myList.get_absolute_url(), f"/lists/{myList.id}/")
