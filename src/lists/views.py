@@ -5,7 +5,9 @@ from lists.forms import ItemForm
 
 # Create your views here.
 def home_page(request):
-        return render(request, 'home.html', {"form": ItemForm()})
+    current_user = request.user
+    print(current_user)
+    return render(request, 'home.html', {"form": ItemForm(), "user": current_user})
 
 
 def view_list(request, list_id):
